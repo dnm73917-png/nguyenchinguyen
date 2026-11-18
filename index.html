@@ -93,31 +93,24 @@
                 </div>
             </div>
 
-            <!-- Settings Bar: Band Mode & Timer Selector -->
-            <div class="flex flex-wrap items-center gap-2 sm:gap-3">
-                <!-- Band Mode -->
-                <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs font-medium">
-                    <button onclick="setBandMode(4)" id="mode4Btn" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white shadow transition">4 Vạch (5%)</button>
-                    <button onclick="setBandMode(5)" id="mode5Btn" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">5 Vạch (1%)</button>
-                    <button onclick="setBandMode('mixed')" id="modeMixedBtn" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">Hỗn hợp</button>
-                </div>
-
+            <!-- Settings Bar: Timer Selector & Quick Actions -->
+            <div class="flex flex-wrap items-center justify-between md:justify-end gap-2 sm:gap-3">
                 <!-- Timer Selector (Chọn giây) -->
                 <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs font-medium">
-                    <span class="px-2 text-slate-400 hidden sm:inline"><i class="fa-regular fa-clock mr-1"></i>Giây:</span>
-                    <button onclick="setTimerLimit(2)" data-time="2" class="time-btn px-2 py-1.5 rounded-lg text-slate-400 hover:text-white transition">2s</button>
-                    <button onclick="setTimerLimit(3)" data-time="3" class="time-btn px-2 py-1.5 rounded-lg text-slate-400 hover:text-white transition">3s</button>
-                    <button onclick="setTimerLimit(5)" data-time="5" class="time-btn px-2 py-1.5 rounded-lg bg-amber-600 text-white shadow transition">5s</button>
-                    <button onclick="setTimerLimit(10)" data-time="10" class="time-btn px-2 py-1.5 rounded-lg text-slate-400 hover:text-white transition">10s</button>
-                    <button onclick="setTimerLimit(0)" data-time="0" class="time-btn px-2 py-1.5 rounded-lg text-slate-400 hover:text-white transition">∞</button>
+                    <span class="px-2 text-slate-400"><i class="fa-regular fa-clock mr-1"></i>Giây:</span>
+                    <button type="button" onclick="setTimerLimit(2)" data-time="2" class="time-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">2s</button>
+                    <button type="button" onclick="setTimerLimit(3)" data-time="3" class="time-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">3s</button>
+                    <button type="button" onclick="setTimerLimit(5)" data-time="5" class="time-btn px-2.5 py-1.5 rounded-lg bg-amber-600 text-white shadow transition">5s</button>
+                    <button type="button" onclick="setTimerLimit(10)" data-time="10" class="time-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">10s</button>
+                    <button type="button" onclick="setTimerLimit(0)" data-time="0" class="time-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition">∞</button>
                 </div>
 
                 <!-- Desktop Sound & Color Chart Buttons -->
                 <div class="hidden md:flex items-center gap-2">
-                    <button onclick="toggleSound()" class="p-2 px-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs flex items-center gap-1.5 transition" title="Bật/Tắt tiếng bíp">
+                    <button type="button" onclick="toggleSound()" class="p-2 px-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs flex items-center gap-1.5 transition" title="Bật/Tắt tiếng bíp">
                         <i class="fa-solid fa-volume-high text-emerald-400" id="iconSoundDesktop"></i>
                     </button>
-                    <button onclick="toggleChartModal()" class="p-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 text-xs font-medium flex items-center gap-1.5 transition">
+                    <button type="button" onclick="toggleChartModal()" class="p-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 text-xs font-medium flex items-center gap-1.5 transition">
                         <i class="fa-solid fa-palette"></i> Bảng màu
                     </button>
                 </div>
@@ -129,8 +122,41 @@
     <main class="max-w-5xl w-full mx-auto my-3 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
         
         <!-- Left/Center Column: Resistor Workbench & Input Controls (8 cols on lg) -->
-        <div class="lg:col-span-8 flex flex-col gap-4">
+        <div class="lg:col-span-8 flex flex-col gap-3.5">
             
+            <!-- PROMINENT BAND MODE SELECTOR RIGHT AT THE TOP -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-2.5 sm:p-3 shadow-xl flex flex-col gap-2.5">
+                <div class="grid grid-cols-3 gap-1.5 sm:gap-2 bg-slate-950 p-1.5 rounded-xl border border-slate-800/90">
+                    <button type="button" onclick="setBandMode(4)" id="mode4Btn" class="py-2 px-2 sm:px-3 rounded-lg bg-amber-600 text-white font-semibold text-xs sm:text-sm shadow flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 transition">
+                        <span class="w-3.5 h-3.5 rounded-full bg-[#e6c89c] border border-amber-900 shrink-0"></span>
+                        <span>4 Vòng <span class="hidden sm:inline text-[11px] opacity-90">(±5% • Thân vàng)</span></span>
+                    </button>
+                    <button type="button" onclick="setBandMode(5)" id="mode5Btn" class="py-2 px-2 sm:px-3 rounded-lg text-slate-400 hover:text-white font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 transition">
+                        <span class="w-3.5 h-3.5 rounded-full bg-[#5fa8d3] border border-sky-900 shrink-0"></span>
+                        <span>5 Vòng <span class="hidden sm:inline text-[11px] opacity-90">(±1% • Thân xanh)</span></span>
+                    </button>
+                    <button type="button" onclick="setBandMode('mixed')" id="modeMixedBtn" class="py-2 px-2 sm:px-3 rounded-lg text-slate-400 hover:text-white font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 transition">
+                        <i class="fa-solid fa-shuffle text-emerald-400 text-xs"></i>
+                        <span>Trộn 4 & 5 Vòng</span>
+                    </button>
+                </div>
+
+                <!-- Dynamic Formula Bar & 5-Band Sub-mode (E24 vs E96) -->
+                <div class="flex flex-wrap items-center justify-between gap-2 px-1 text-xs">
+                    <div id="bandFormulaHint" class="text-slate-300 font-mono text-[11px] sm:text-xs flex items-center gap-1.5">
+                        <span class="text-amber-400 font-bold">4 Vòng:</span>
+                        <span>[Vạch 1][Vạch 2] × [Vạch 3: Hệ số nhân] ± [Vạch 4: Sai số]</span>
+                    </div>
+
+                    <!-- Sub-toggle for 5-band values (E24 common vs E96 precision) -->
+                    <div id="fiveBandSubOptions" class="hidden items-center gap-1 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800 text-[11px]">
+                        <span class="text-slate-400 mr-1">Chuẩn 5 vòng:</span>
+                        <button type="button" onclick="setFiveBandSeries('E24')" id="btnSeriesE24" class="px-2 py-0.5 rounded bg-sky-600 text-white font-medium transition">Thông dụng (E24)</button>
+                        <button type="button" onclick="setFiveBandSeries('E96')" id="btnSeriesE96" class="px-2 py-0.5 rounded text-slate-400 hover:text-white font-medium transition">Số lẻ (E96)</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Stats Ribbon -->
             <div class="grid grid-cols-4 gap-2 sm:gap-3">
                 <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 sm:p-3 text-center">
@@ -158,14 +184,14 @@
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 shadow-2xl relative overflow-hidden">
                 
                 <!-- Top bar inside card: Timer readout & Band hints toggle -->
-                <div class="flex items-center justify-between mb-2">
-                    <div class="flex items-center gap-2">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div class="flex flex-wrap items-center gap-2">
                         <span id="resistorTypeBadge" class="text-xs font-mono px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/20">
-                            Điện trở than 4 vạch (±5%)
+                            Điện trở than 4 vòng (±5%)
                         </span>
-                        <label class="flex items-center gap-1.5 text-xs text-slate-400 cursor-pointer hover:text-slate-200 ml-2">
+                        <label class="flex items-center gap-1.5 text-xs text-slate-300 cursor-pointer hover:text-white bg-slate-950/90 px-2.5 py-1 rounded-md border border-slate-800">
                             <input type="checkbox" id="chkShowColorNames" onchange="renderResistorSVG()" class="rounded bg-slate-800 border-slate-700 text-emerald-500 focus:ring-0">
-                            <span>Hiện tên màu</span>
+                            <span>Hiện tên màu & giải thích</span>
                         </label>
                     </div>
 
@@ -323,39 +349,43 @@
             <!-- Quick Mnemonic & Formula Card -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
                 <div class="flex items-center justify-between mb-2.5">
-                    <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
-                        <i class="fa-solid fa-bolt"></i> Mẹo Nhìn Vạch Số 3 (4 Vạch)
+                    <h2 id="mnemonicCardTitle" class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt"></i> Mẹo Nhìn Nhanh Hệ Số Nhân
                     </h2>
-                    <button onclick="toggleChartModal()" class="text-xs text-emerald-400 hover:underline">Xem đủ bảng</button>
+                    <button type="button" onclick="toggleChartModal()" class="text-xs text-emerald-400 hover:underline">Xem đủ bảng</button>
+                </div>
+                <div id="mnemonicCardSub" class="text-[11px] text-slate-400 mb-2">
+                    Look vào <b>Vạch 3</b> (loại 4 vòng) hoặc <b>Vạch 4</b> (loại 5 vòng):
                 </div>
                 <div class="grid grid-cols-2 gap-1.5 text-xs">
                     <div class="bg-slate-950/90 p-2 rounded-lg border border-slate-800/80 flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-black border border-slate-600 shrink-0"></span>
-                        <span><b>Đen (0):</b> hàng chục Ω</span>
+                        <span><b>Đen (×1):</b> giữ nguyên Ω</span>
                     </div>
                     <div class="bg-slate-950/90 p-2 rounded-lg border border-slate-800/80 flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-[#7c3f12] shrink-0"></span>
-                        <span><b>Nâu (1):</b> hàng trăm Ω</span>
+                        <span><b>Nâu (×10):</b> thêm 1 số 0</span>
                     </div>
                     <div class="bg-slate-950/90 p-2 rounded-lg border border-slate-800/80 flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-[#dc2626] shrink-0"></span>
-                        <span><b>Đỏ (2):</b> hàng kΩ (X.Xk)</span>
+                        <span><b>Đỏ (×100):</b> thêm 2 số 0</span>
                     </div>
                     <div class="bg-slate-950/90 p-2 rounded-lg border border-slate-800/80 flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-[#ea580c] shrink-0"></span>
-                        <span><b>Cam (3):</b> hàng chục kΩ</span>
+                        <span><b>Cam (×1k):</b> đơn vị kΩ</span>
                     </div>
                     <div class="bg-slate-950/90 p-2 rounded-lg border border-slate-800/80 flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-[#facc15] shrink-0"></span>
-                        <span><b>Vàng (4):</b> trăm kΩ</span>
+                        <span><b>Vàng (×10k):</b> chục/trăm kΩ</span>
                     </div>
                     <div class="bg-slate-950/90 p-2 rounded-lg border border-slate-800/80 flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-[#16a34a] shrink-0"></span>
-                        <span><b>Lục (5):</b> hàng MΩ</span>
+                        <span><b>Lục (×100k):</b> hàng MΩ</span>
                     </div>
                 </div>
-                <div class="mt-2.5 text-[11px] text-slate-400 bg-slate-950/60 p-2 rounded-lg border border-slate-800/60">
-                    <span class="text-slate-200 font-semibold">Câu thần chú:</span> Đen(0) - Nâu(1) - Đỏ(2) - Cam(3) - Vàng(4) - Lục(5) - Lam(6) - Tím(7) - Xám(8) - Trắng(9).
+                <div class="mt-2.5 text-[11px] text-slate-400 bg-slate-950/60 p-2 rounded-lg border border-slate-800/60 space-y-1">
+                    <div><span class="text-amber-300 font-semibold">Ví dụ 5 vòng:</span> Lam(6) - Đen(0) - Đen(0) - Nâu(×10) - Nâu(±1%) = <b>600 × 10 = 6 kΩ</b>.</div>
+                    <div><span class="text-slate-200 font-semibold">Thần chú:</span> Đen(0) - Nâu(1) - Đỏ(2) - Cam(3) - Vàng(4) - Lục(5) - Lam(6) - Tím(7) - Xám(8) - Trắng(9).</div>
                 </div>
             </div>
 
@@ -427,18 +457,32 @@
 
         // Standard E24 two-digit mantissas commonly found on electronics & CRT boards
         const E24_MANTISSAS = [
-            10, 12, 15, 18, 20, 22, 24, 27, 30, 33, 36, 39, 43, 47, 51, 56, 62, 68, 75, 82, 91
+            10, 12, 15, 18, 20, 22, 24, 27, 30, 33, 36, 39, 43, 47, 51, 56, 60, 62, 68, 75, 82, 91
+        ];
+
+        // Realistic 5-band E24 3-digit mantissas (e.g. 100, 120, 150, 220, 330, 470, 560, 600, 680, 820)
+        const E24_5BAND_MANTISSAS = [
+            100, 110, 120, 130, 150, 160, 180, 200, 220, 240, 270, 300, 330, 360, 390, 430, 470, 510, 560, 600, 620, 680, 750, 820, 910
+        ];
+
+        // Realistic 5-band E96 precision 3-digit mantissas found on metal-film resistors
+        const E96_5BAND_MANTISSAS = [
+            100, 105, 110, 115, 121, 127, 133, 140, 147, 150, 154, 162, 169, 178, 187, 196, 200,
+            205, 215, 221, 232, 243, 249, 261, 274, 287, 301, 316, 332, 348, 365, 383, 402, 422,
+            442, 464, 470, 475, 499, 511, 536, 562, 590, 604, 619, 649, 681, 715, 750, 787, 825, 866, 909, 953
         ];
 
         // Multiplier exponents: -2 (0.01), -1 (0.1), 0 (1), 1 (10), 2 (100), 3 (1k), 4 (10k), 5 (100k)
         // Weighted toward common values (1Ω to 1MΩ)
         const WEIGHTED_EXPONENTS_4BAND = [-2, -1, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5];
+        const WEIGHTED_EXPONENTS_5BAND = [-2, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 4];
 
         /**************************************************************
          * 2. STATE MANAGEMENT
          **************************************************************/
         let state = {
             bandMode: 4,            // 4, 5, or 'mixed'
+            fiveBandSeries: 'E24',  // 'E24' (common round values) or 'E96' (precision odd values)
             timerLimit: 5,          // seconds (0 = unlimited)
             soundEnabled: true,
             mcMode: true,           // Default ON so mobile users can tap without virtual keyboard popping up
@@ -508,14 +552,13 @@
         function generateResistor() {
             let activeBands = state.bandMode;
             if (activeBands === 'mixed') {
-                activeBands = Math.random() < 0.65 ? 4 : 5;
+                activeBands = Math.random() < 0.5 ? 4 : 5;
             }
 
-            const mantissa = E24_MANTISSAS[Math.floor(Math.random() * E24_MANTISSAS.length)];
-            const d1 = Math.floor(mantissa / 10);
-            const d2 = mantissa % 10;
-
             if (activeBands === 4) {
+                const mantissa = E24_MANTISSAS[Math.floor(Math.random() * E24_MANTISSAS.length)];
+                const d1 = Math.floor(mantissa / 10);
+                const d2 = mantissa % 10;
                 const exp = WEIGHTED_EXPONENTS_4BAND[Math.floor(Math.random() * WEIGHTED_EXPONENTS_4BAND.length)];
                 const ohms = Number((mantissa * Math.pow(10, exp)).toPrecision(4));
                 const tolBand = -1; // Gold ±5%
@@ -527,20 +570,24 @@
                     tolerance: '±5%'
                 };
             } else {
-                // 5-band resistor: 3 significant digits (usually d1, d2, 0 or 5) + multiplier + Brown (1%)
-                const d3 = Math.random() < 0.85 ? 0 : 5;
-                const sig3 = d1 * 100 + d2 * 10 + d3;
-                // Choose multiplier so total resistance is between 1Ω and 1MΩ
-                const expChoices = [-2, -1, 0, 1, 2, 3];
-                const exp = expChoices[Math.floor(Math.random() * expChoices.length)];
+                // 5-band resistor: 3 significant digits + multiplier + Brown (±1%) or Red (±2%)
+                const pool = state.fiveBandSeries === 'E96' ? E96_5BAND_MANTISSAS : E24_5BAND_MANTISSAS;
+                const sig3 = pool[Math.floor(Math.random() * pool.length)];
+                const d1 = Math.floor(sig3 / 100);
+                const d2 = Math.floor((sig3 % 100) / 10);
+                const d3 = sig3 % 10;
+
+                const exp = WEIGHTED_EXPONENTS_5BAND[Math.floor(Math.random() * WEIGHTED_EXPONENTS_5BAND.length)];
                 const ohms = Number((sig3 * Math.pow(10, exp)).toPrecision(4));
-                const tolBand = 1; // Brown ±1%
+                // 90% Brown (±1%), 10% Red (±2%)
+                const tolBand = Math.random() < 0.9 ? 1 : 2;
+                const tolStr = tolBand === 1 ? '±1%' : '±2%';
                 return {
                     bandCount: 5,
                     bands: [d1, d2, d3, exp, tolBand],
                     ohms: ohms,
                     formatted: formatOhms(ohms),
-                    tolerance: '±1%'
+                    tolerance: tolStr
                 };
             }
         }
@@ -553,47 +600,58 @@
             if (!r) return;
 
             const is5Band = r.bandCount === 5;
-            // Authentic body colors: Beige/Tan for 4-band carbon film, Precision Blue for 5-band metal film
-            const bodyBaseColor = is5Band ? '#3882a6' : '#d6b88a';
-            const bodyDarkColor = is5Band ? '#1f536e' : '#9c7c4e';
-            const bodyHighlight = is5Band ? '#7ec4e6' : '#f3e3c9';
+            // Authentic body colors: Beige/Tan (#e6c89c) for 4-band carbon film, Precision Light Blue (#5fa8d3) for 5-band metal film
+            const bodyBaseColor = is5Band ? '#5fa8d3' : '#e6c89c';
+            const bodyDarkColor = is5Band ? '#2b678a' : '#a6824f';
+            const bodyHighlight = is5Band ? '#9ed4f2' : '#fbf0df';
 
             const badge = document.getElementById('resistorTypeBadge');
+            const formulaHint = document.getElementById('bandFormulaHint');
             if (is5Band) {
-                badge.textContent = 'Điện trở kim loại 5 vạch (±1%)';
-                badge.className = 'text-xs font-mono px-2.5 py-1 rounded-md bg-sky-500/15 text-sky-300 border border-sky-500/30';
+                badge.textContent = `Điện trở 5 vòng kim loại (${r.tolerance})`;
+                badge.className = 'text-xs font-mono px-2.5 py-1 rounded-md bg-sky-500/15 text-sky-300 border border-sky-500/30 font-semibold';
+                if (formulaHint) {
+                    formulaHint.innerHTML = `<span class="text-sky-400 font-bold">5 Vòng:</span> <span>[Vạch 1][Vạch 2][Vạch 3] × [Vạch 4: Hệ số nhân] ± [Vạch 5: Sai số]</span>`;
+                }
             } else {
-                badge.textContent = 'Điện trở than 4 vạch (±5%)';
-                badge.className = 'text-xs font-mono px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-300 border border-amber-500/30';
+                badge.textContent = `Điện trở 4 vòng than (${r.tolerance})`;
+                badge.className = 'text-xs font-mono px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold';
+                if (formulaHint) {
+                    formulaHint.innerHTML = `<span class="text-amber-400 font-bold">4 Vòng:</span> <span>[Vạch 1][Vạch 2] × [Vạch 3: Hệ số nhân] ± [Vạch 4: Sai số]</span>`;
+                }
             }
 
-            // Band X positions along the resistor body
+            // Band X positions along the resistor body with clear gap before the tolerance band on the right
             const bandPositions = is5Band 
-                ? [175, 225, 270, 315, 395] 
-                : [180, 235, 290, 390];
+                ? [172, 218, 260, 302, 396] 
+                : [178, 234, 290, 396];
 
             let bandsSvg = '';
             r.bands.forEach((colorCode, idx) => {
                 const c = COLOR_BANDS[colorCode];
                 const x = bandPositions[idx];
-                // First & last bands sit slightly on the end caps (taller)
+                // First & last bands sit on the end caps (taller)
                 const isCapBand = (idx === 0 || idx === r.bands.length - 1);
                 const y = isCapBand ? 30 : 37;
                 const h = isCapBand ? 80 : 66;
-                const w = 20;
+                const w = is5Band ? 18 : 20;
 
                 const fillAttr = c.metallic 
                     ? (colorCode === -1 ? 'url(#goldGrad)' : 'url(#silverGrad)')
                     : c.hex;
+
+                const roleLabel = (idx === r.bands.length - 1)
+                    ? '±'
+                    : (idx === r.bands.length - 2 ? '×' : (idx + 1));
 
                 bandsSvg += `
                     <g>
                         <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="${fillAttr}" stroke="${c.border}" stroke-width="0.8"/>
                         <!-- 3D Cylindrical Shading & Specular Highlight Over Band -->
                         <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="url(#cylinderShade)" pointer-events="none"/>
-                        <!-- Band index label below -->
-                        <text x="${x + w/2}" y="132" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="11" font-weight="bold">
-                            ${idx === r.bands.length - 1 ? '±' : (idx + 1)}
+                        <!-- Band index/role label below -->
+                        <text x="${x + w/2}" y="133" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="11" font-weight="bold">
+                            ${roleLabel}
                         </text>
                     </g>
                 `;
@@ -702,18 +760,38 @@
 
             document.getElementById('resistorSvgContainer').innerHTML = svgHTML;
 
-            // Optional Color Name Hints
+            // Optional Color Name & Step-by-step Explanation Hints
             const showNames = document.getElementById('chkShowColorNames').checked;
             const hintBox = document.getElementById('colorNamesHint');
             if (showNames) {
                 hintBox.classList.remove('hidden');
-                hintBox.innerHTML = r.bands.map((code, i) => {
+                const badgesHtml = r.bands.map((code, i) => {
                     const c = COLOR_BANDS[code];
-                    return `<span class="px-2.5 py-1 rounded-md text-xs font-semibold border flex items-center gap-1.5 bg-slate-950/90 border-slate-700">
-                        <span class="w-3 h-3 rounded-full inline-block border border-white/30" style="background:${c.hex}"></span>
-                        <span>Vạch ${i+1}: ${c.name}</span>
+                    let role = '';
+                    if (i === r.bands.length - 1) {
+                        role = `Sai số ${c.tol || r.tolerance}`;
+                    } else if (i === r.bands.length - 2) {
+                        role = `Nhân ${c.multLabel}`;
+                    } else {
+                        role = `Số ${i+1} (${code})`;
+                    }
+                    return `<span class="px-2.5 py-1 rounded-lg text-xs font-medium border flex items-center gap-1.5 bg-slate-950/95 border-slate-700 text-slate-200">
+                        <span class="w-3.5 h-3.5 rounded-full inline-block border border-white/30 shrink-0" style="background:${c.hex}"></span>
+                        <span><b>Vạch ${i+1} (${c.name}):</b> ${role}</span>
                     </span>`;
                 }).join('');
+
+                const digitsStr = is5Band 
+                    ? `${r.bands[0]}${r.bands[1]}${r.bands[2]}` 
+                    : `${r.bands[0]}${r.bands[1]}`;
+                const multObj = COLOR_BANDS[r.bands[r.bands.length - 2]];
+
+                hintBox.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-center gap-1.5">${badgesHtml}</div>
+                    <div class="w-full text-center text-xs font-mono text-emerald-300 bg-slate-950/90 border border-emerald-500/30 rounded-lg py-1 px-3 mt-1">
+                        Cách tính: <b>${digitsStr}</b> × <b>${multObj.multLabel.replace('×', '')}</b> = <b>${r.formatted} (${r.tolerance})</b>
+                    </div>
+                `;
             } else {
                 hintBox.classList.add('hidden');
             }
@@ -1270,13 +1348,48 @@
                 5: document.getElementById('mode5Btn'),
                 'mixed': document.getElementById('modeMixedBtn')
             };
+
+            const activeClasses = {
+                4: 'py-2 px-2 sm:px-3 rounded-lg bg-amber-600 text-white font-semibold text-xs sm:text-sm shadow flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 transition',
+                5: 'py-2 px-2 sm:px-3 rounded-lg bg-sky-600 text-white font-semibold text-xs sm:text-sm shadow flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 transition',
+                'mixed': 'py-2 px-2 sm:px-3 rounded-lg bg-emerald-600 text-white font-semibold text-xs sm:text-sm shadow flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 transition'
+            };
+            const inactiveClass = 'py-2 px-2 sm:px-3 rounded-lg text-slate-400 hover:text-white font-semibold text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 transition';
+
             Object.keys(btns).forEach(k => {
                 if (String(k) === String(mode)) {
-                    btns[k].className = 'px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white shadow transition';
+                    btns[k].className = activeClasses[k];
                 } else {
-                    btns[k].className = 'px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition';
+                    btns[k].className = inactiveClass;
                 }
             });
+
+            // Show or hide the 5-band E24/E96 sub-option bar
+            const subBar = document.getElementById('fiveBandSubOptions');
+            if (subBar) {
+                if (mode === 5 || mode === 'mixed') {
+                    subBar.classList.remove('hidden');
+                    subBar.classList.add('flex');
+                } else {
+                    subBar.classList.add('hidden');
+                    subBar.classList.remove('flex');
+                }
+            }
+
+            nextResistor();
+        }
+
+        function setFiveBandSeries(series) {
+            state.fiveBandSeries = series;
+            const btnE24 = document.getElementById('btnSeriesE24');
+            const btnE96 = document.getElementById('btnSeriesE96');
+            if (series === 'E24') {
+                btnE24.className = 'px-2 py-0.5 rounded bg-sky-600 text-white font-medium transition';
+                btnE96.className = 'px-2 py-0.5 rounded text-slate-400 hover:text-white font-medium transition';
+            } else {
+                btnE96.className = 'px-2 py-0.5 rounded bg-sky-600 text-white font-medium transition';
+                btnE24.className = 'px-2 py-0.5 rounded text-slate-400 hover:text-white font-medium transition';
+            }
             nextResistor();
         }
 
@@ -1309,12 +1422,6 @@
                 input.value = '';
                 input.blur();
             }
-        }
-
-        function clearInput() {
-            const input = document.getElementById('answerInput');
-            input.value = '';
-            input.focus();
         }
 
         function toggleSound() {
